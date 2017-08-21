@@ -8,7 +8,7 @@ describe ShippingCalculator, '#calculate_cost' do
                           width: 2.5)
     expected_cost = 618.44
 
-    calculator =  ShippingCalculator.new
+    calculator =  ShippingCalculator.new(shipping: NormalShipping)
     cost = calculator.calculate_cost(package)
 
     expect(cost).to eq expected_cost
@@ -21,8 +21,8 @@ describe ShippingCalculator, '#calculate_cost' do
                           width: 2.5)
     expected_cost = 1914.41
 
-    calculator =  ShippingCalculator.new
-    cost = calculator.calculate_cost(package, express: true)
+    calculator =  ShippingCalculator.new(shipping: ExpressShipping)
+    cost = calculator.calculate_cost(package)
 
     expect(cost).to eq expected_cost
   end
