@@ -4,13 +4,10 @@
 # Here's an incomplete list:
 #   1. Verifying that the message is valid.
 #   2. Verifying that the recipient emails are valid.
-#   3. Stripping spaces from email addresses.
-#   4. Splitting email addresses on several delimiters.
 #   5. Delivering invitations.
 #
-# TODO: Let's improve this code by extracting a new class to handle
-# responsibilities 3 and 4. Create a new class to perform these tasks, and call
-# it from this one.
+#   3. Stripping spaces from email addresses.
+#   4. Splitting email addresses on several delimiters.
 class SurveyInviter
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/
 
@@ -58,6 +55,6 @@ class SurveyInviter
   end
 
   def recipient_list
-    @recipient_list ||= @recipients.gsub(/\s+/, '').split(/[\n,;]+/)
+    @recipient_list ||= RecipientsFormatter.format(@recipients)
   end
 end
