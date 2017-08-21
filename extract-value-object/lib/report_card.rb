@@ -9,22 +9,6 @@ class ReportCard
   private
 
   def grade_scores
-    @scores.map do |score|
-      grade_score(score)
-    end
-  end
-
-  def grade_score(score)
-    if score < 60
-      'F'
-    elsif score < 70
-      'D'
-    elsif score < 80
-      'C'
-    elsif score < 90
-      'B'
-    else
-      'A'
-    end
+    @scores.map { |points| Score.new(points).grade }
   end
 end
