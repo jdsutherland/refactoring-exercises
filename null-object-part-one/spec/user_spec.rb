@@ -33,7 +33,7 @@ describe User do
     it 'returns false without a subscription' do
       user = User.new(subscription: nil)
 
-      expect(user.has_mentoring?).to be_false
+      expect(user.has_mentoring?).to be_falsey
     end
   end
 
